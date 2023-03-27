@@ -40,20 +40,20 @@ exports.fetchAllPost = async (req, res, next) => {
     const findComment = await commentmodel.find({ isDeleted: false });
 
 
-    const query =  postmodel.find({ isDeleted : false}).sort({_id :-1});
+    const post =  postmodel.find({ isDeleted : false}).sort({_id :-1});
     const page = req.query.page || 1;
     const limit = req.query.limit || 3;
     const skip = (page - 1) * limit;
     const count = await postmodel.countDocuments({isDeleted : false});
         
-    const posts = await query.skip(skip).limit(limit);
+    const posts = await post.skip(skip).limit(limit);
 
 
     res.render("pages/allpost", {
       posts: posts,
       comments: findComment,
       current : page,
-      pages : Math.ceil(count / limit)
+      totalpages : Math.ceil(count / limit)
       
 
     });
