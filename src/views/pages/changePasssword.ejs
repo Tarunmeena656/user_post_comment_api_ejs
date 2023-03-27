@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/navbar.ejs') %>
+    </header>
+    <main>
+        <div class='changepassword'>
+            <form action="/user/changePassword/<%= user._id %>?_method=put" method="post">
+                <% if (error) { %>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong><%= error %></strong>   
+                    </div>
+                <% } %>
+                <h1>Change Password</h1>
+                <label for="">Enter your old Password</label><br>
+                <input type="text" name="oldpassword" value="" id="oldpassword"><br><br>
+                <label for="">Enter your new Password</label><br>
+                <input type="text" name="changepassword" value="" id="changepassword">  <br><br> 
+                <button type="submit">change</button>
+                <button>cancel</button>
+            </form>
+            
+        </form>      
+    </div>
+    </main>
+    
+</body>
+</html>
+

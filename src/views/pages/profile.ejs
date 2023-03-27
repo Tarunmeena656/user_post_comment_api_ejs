@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/navbar.ejs') %>
+    </header>
+    <main class="container">
+        <div class="content1">
+            <h1 class="u"> User Information</h1>
+            <div class="profile1">
+               <% if (user == null) { %>
+                <h1>No user</h1>
+               <% }else { %>
+                
+                
+                
+                 
+                <h1> <%= user.username %> </h1><br><br>
+                <h4>E-mail :<%=  user.email%> </h4>
+            </div>
+            <div class="user1">
+                <form action="user/update/<%= user._id %>" method="get">
+                    <button class='updatebutton' type="submit">Update</button>
+                  </form>
+                  <form action="user/delete/<%= user._id %>" method="get">
+                    <button class='updatebutton' type="submit">Delete</button>
+                  </form>  
+
+                  <form action="user/changePassword/<%= user._id %>" method="get">
+                    <button class='change' type="submit">change Password</button>
+                  </form> 
+
+            </div>
+            <div class="postInfo1">
+                <h4>Post</h4>
+                 <% posts.forEach(post => { %>
+                      <div class="Post1">
+                        <h6>POSTNAME : <%= post.title %></h6>
+                        <p>DESCRIPTION : <%= post.description %></p>
+                      </div>
+                 <% }) %>
+
+                 <% } %>
+
+            </div>
+            </div>
+    </main>
+    <footer>
+        <%- include('../partials/footer.ejs') %>
+    </footer>
+</body>
+</html>
+
+

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/login-navbar.ejs') %>
+    </header>
+    <main class="container">
+        <div  class="content">
+           
+        <form action="/login" method="POST">
+            <% if ( flash.error ) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong><%= flash.error %> </strong> 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+            <% } %>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-lg btn-block btn-primary" value="Login">
+            </div>
+        </form>
+        </div>
+      
+            <li class="forgotpage">
+            <a  href="/forgotPage">Forgot-Password</a>
+          </li>
+
+    
+    </main>
+    <footer>
+        <%- include('../partials/footer.ejs') %>
+    </footer>
+</body>
+</html>
+
+
+
+
