@@ -1,16 +1,18 @@
 const { Router } = require('express');
 const { auth } = require('../middlewares/session-checker');
-const { createComment, deleteComment, editComment, updateComment } = require('../controller/comment-controller');
+const { getforgotPage, forgotPassword, setforgotPassword,changepassword1 } = require('../controller/auth.controller');
+const { changePassword } = require('../controller/user-controller');
 
-const commentRouter = Router();
+
+const forgotRouter = Router();
 
 
-commentRouter.post('/createcomment',  auth, createComment);
+forgotRouter.get('/forgotPage', getforgotPage);
 
-commentRouter.delete('/comments/delete/:id', auth, deleteComment);
+forgotRouter.post('/forgotpassword', forgotPassword);
 
-commentRouter.get('/comments/update/:id', auth, editComment);
+forgotRouter.get('/forgot-password/:id/:token', setforgotPassword);
 
-commentRouter.put('/comments/update/:id',  auth, updateComment);
+forgotRouter.post('/forgot-password/:id',changepassword1);
 
-module.exports = commentRouter;
+module.exports = forgotRouter;

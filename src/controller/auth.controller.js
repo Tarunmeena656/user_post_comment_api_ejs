@@ -73,7 +73,7 @@ exports.setforgotPassword = async (req, res, next) => {
 }
 
 
-exports.changepassword = async (req,res,next) => {
+exports.changepassword1 = async (req,res,next) => {
     try {
         const { id } = req.params;
         const { password, confirmPassword } = req.body;
