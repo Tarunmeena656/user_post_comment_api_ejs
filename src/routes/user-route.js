@@ -5,6 +5,8 @@ const {auth} = require('../middlewares/session-checker')
 const userRouter = Router({mergeParams:true});
 require('../middlewares/passport')
 
+userRouter.get('/' ,userController.startPage )
+
 userRouter.get('/signup', userController.signup);
 
 userRouter.post('/signup', userController.signupProcess);

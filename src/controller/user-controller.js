@@ -4,6 +4,15 @@ const usermodel = require('../model/usermodel');
 const postmodel = require('../model/postmodel');
 const commentmodel = require('../model/commentmodel');
 
+exports.startPage = async(req,res,next)=>{
+    try {
+        res.render('pages/startPage')
+        
+    } catch (error) {
+        next(error)
+    }
+}
+
 exports.signup = async (req,res,next) => {
     try {
         if(req.session.user) {
@@ -40,7 +49,7 @@ exports.signupProcess = async (req,res,next) => {
                  return res.render('pages/signup', { error: result.error.details[0].message , isLoggedIn : false });
 
                 const newUser = await usermodel.create(req.body);
-                res.redirect('/login');
+                res.redirect('/home');
             } else {
                 res.render("pages/signup", {
                     error: "User Already exist",
