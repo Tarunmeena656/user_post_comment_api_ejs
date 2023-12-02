@@ -14,6 +14,7 @@ const methodOverride = require('method-override');
 
 
 const app = express();
+const port = process.env.PORT || 800;
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -62,8 +63,8 @@ app.use(indexRouter)
 
 connectDatabase()
 .then(() => {
-    app.listen(4000, () => {
-        console.log('server is up and running on 4000')
+    app.listen(port, () => {
+        console.log(`Server Running at port ${port}`)
     });
 })
 .catch((err)=>{
